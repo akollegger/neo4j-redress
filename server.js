@@ -64,6 +64,6 @@ app.get('/users', user.list);
 
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Bent Pipe public port at " + app.get('port'));
+  console.log("Putting a new dress on Neo4j, visible on port " + app.get('port'));
 });
 
