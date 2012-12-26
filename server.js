@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , webadmin = require('./routes/webadmin')
   , http = require('http')
   , path = require('path')
   , cons = require('consolidate')
@@ -59,7 +60,16 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+app.locals({
+  title: 'Neo4j Redressed',
+  theme: function() {
+  	return "classic";
+  }
+});
+
+
 app.get('/', routes.index);
+app.get('/webadmin', webadmin.index);
 app.get('/users', user.list);
 
 
