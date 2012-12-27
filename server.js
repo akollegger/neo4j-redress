@@ -39,7 +39,6 @@ function neo4jProxy(pattern, host, port) {
   };
 };
 
-
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -51,6 +50,8 @@ app.configure(function(){
   app.use(neo4jProxy(/\/db\/manage\/.*/, 'localhost', 7474));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.cookieParser('the weather is nice in Sweden'));
+  app.use(express.cookieSession());
   app.use(app.router);
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
   app.use(express.static(path.join(__dirname, 'public')));
@@ -74,6 +75,6 @@ app.get('/users', user.list);
 
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Putting a new dress on Neo4j, visible on port " + app.get('port'));
+  console.log("Dressing up Neo4j, on display at port " + app.get('port'));
 });
 
