@@ -12,7 +12,9 @@
   color: #aaa;
   background-color: rgba(0, 0, 0, 0.8);
   font: 1.75em "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  max-width: 900px;
+  margin-top: 1em;
+  min-height: 90%;
+  width: 80%;
 }
 .deck-container .slide {
   background: #000;
@@ -134,7 +136,7 @@
 }
 
 .deck-container > .slide .hint {
-  position: fixed;
+  position: absolute;
   bottom: 1em;
   text-align: center;
 }

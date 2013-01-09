@@ -14,7 +14,9 @@ var express = require('express')
 
 var app = express();
 
-var proxy = new httpProxy.RoutingProxy();
+var proxy = new httpProxy.RoutingProxy(
+//  express.basicAuth('username', 'password')
+);
 
 /* Proxy Neo4j REST calls */
 function wantsJson(req) {

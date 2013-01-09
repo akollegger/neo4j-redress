@@ -13,7 +13,9 @@ require(
             jQuery('#tour').append('<div class="deck-container" />');
             jQuery('.deck-container').load('/themes/tour/welcome.html', function() {
               $.getScript('/themes/tour/js/deck.core.js', function() {
-                $.deck('.slide');
+                $.getScript('/themes/tour/js/deck.navigation.js', function() {
+                  $.deck('.slide');
+                });
               });
             });
         });
