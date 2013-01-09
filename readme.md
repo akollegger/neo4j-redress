@@ -17,7 +17,8 @@ using css and javascript.
 ### Get the Redress Proxy
 
 - [got node.js](http://nodejs.org), right?
-- `git clone git@github.com:akollegger/neo4j-redress.git`
+- `git clone https://github.com/akollegger/neo4j-redress.git`
+- `cd neo4j-redress`
 - `npm install`
 
 ### Run Neo4j Redress
