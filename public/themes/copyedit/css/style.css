@@ -1,0 +1,11 @@
+/* @override 
+	http://localhost:3000/css/custom.css */
+
+.diff {
+  background-color: #f87fd2;
+}
+
+.diff:hover {
+  background-color: #ececec;
+    z-index: -1;
+}

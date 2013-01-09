@@ -70,8 +70,15 @@ app.locals({
 
 
 app.get('/', routes.index);
+app.get('/deck', routes.deck);
+
 app.get('/webadmin', webadmin.index);
-app.get('/users', user.list);
+
+app.get('/theme/:theme', function(req, res, next){
+  req.session.theme = req.params.theme;
+  res.redirect('/webadmin/');
+});
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

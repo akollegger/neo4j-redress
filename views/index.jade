@@ -19,7 +19,7 @@ html.no-js
     link(rel='stylesheet', href='/webadmin/css/style.css', type='text/css')
     script(src='js/vendor/modernizr-2.6.2-respond-1.1.0.min.js')
     
-  body
+  body    
     //if lt IE 7
       p.chromeframe
         | You are using an
@@ -49,29 +49,48 @@ html.no-js
       .hero-unit
         h1 Neo4j, Re-dressed
         p.lead
-          | Bow tie, party dress or dungarees? Playing dress-up with Neo4j.
+          | Bow tie, party dress or dungarees? Dress for success, appropriate for the occasion.
       //
          Example row of columns 
       .row
-        .span4
-          h2 Classic
-          p
-            | Simple and utilitarian, Neo4j Classic is suitable for any occasion. 
-          p
-            a.btn(href='/webadmin/') Behold »
-        .span4
-          h2 Dub Step
-          p
-            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p
-            a.btn(href='#') View details »
-        .span4
-          h2 Heading
-          p
-            | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          p
-            a.btn(href='#') View details »
-      hr
+        .span3
+          .thumbnail
+            img(style='width: 300px; height: 200px;', src='themes/classic/img/thumbnail.png')
+            .caption
+              h3 Classic
+              p
+                | Simple and utilitarian, a good choice for any day of the week.
+              p
+                a.btn(href='/theme/classic') Behold »
+        .span3
+          .thumbnail
+            img(style='width: 300px; height: 200px;', src='themes/classic/img/thumbnail.png')
+            .caption
+              h3 Copy Edit
+              p
+                | Same good looks, with text corrections and updates.
+              p
+                a.btn(href='/theme/copyedit') Behold »
+        .span3
+          .thumbnail
+            img(style='width: 300px; height: 200px;', src='themes/tour/img/thumbnail.png')
+            .caption
+              h3 Tour
+              p
+                | A welcoming guide to Neo4j.
+              p
+                a.btn(href='/theme/tour') Behold »
+        .span3
+          .thumbnail
+            img(style='width: 300px; height: 200px;', src='themes/classic/img/thumbnail.png')
+            .caption
+              h3 Classic
+              p
+                | Simple and utilitarian, a good choice for any day of the week.
+              p
+                a.btn(href='/theme/classic') Behold »
+                
+      hr      
       footer
         p &copy; Neo Technology #{new Date().getFullYear()}
     //

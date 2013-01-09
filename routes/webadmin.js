@@ -4,8 +4,8 @@
  */
 
 exports.index = function(req, res) {
-    req.session.count = req.session.count || 0;
-    var n = req.session.count++;
+    req.session.theme = req.session.theme || "classic";
+    var theme = req.session.theme;
 
-    res.render('webadmin/index', { n: n });
+    res.render('webadmin/index', { theme: theme });
 };
