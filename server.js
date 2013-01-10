@@ -38,7 +38,7 @@ function neo4jProxy(pattern, host, port) {
   return function (req, res, next) {
     if (req.url.match(pattern) || wantsJson(req) ) {
       if (process.env.NEO4J_URL) {
-        req.headers.authorization = 'Basic ' + new Buffer(neo4j_connect.user + ':' + neo4j_url.password).toString('base64');
+        req.headers.authorization = 'Basic ' + new Buffer(neo4j_connect.user + ':' + neo4j_connect.password).toString('base64');
       }
       proxy.proxyRequest(req,res, {
         target: {
