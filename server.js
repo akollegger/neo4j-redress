@@ -14,9 +14,20 @@ var express = require('express')
 
 var app = express();
 
-var proxy = new httpProxy.RoutingProxy(
-//  express.basicAuth('username', 'password')
-);
+var proxy = new httpProxy.RoutingProxy();
+
+var neo4j_connect = {
+  host: 'localhost',
+  port: 7474
+};
+
+if (process.env.NEO4J_URL) {
+  var matches = process.env.NEO4J_URL.match(/http:\/\/([^:]+):([^@]+)@([^:]+):(\d+)/);
+  neo4j_connect.user = matches[1];
+  neo4j_connect.password = matches[2];
+  neo4j_connect.host = matches[3];
+  neo4j_connect.port = parseInt(matches[4]);
+}
 
 /* Proxy Neo4j REST calls */
 function wantsJson(req) {
@@ -26,6 +37,9 @@ function wantsJson(req) {
 function neo4jProxy(pattern, host, port) {
   return function (req, res, next) {
     if (req.url.match(pattern) || wantsJson(req) ) {
+      if (process.env.NEO4J_URL) {
+        req.headers.authorization = 'Basic ' + new Buffer(neo4j_connect.user + ':' + neo4j_url.password).toString('base64');
+      }
       proxy.proxyRequest(req,res, {
         target: {
           host: host,
@@ -47,9 +61,9 @@ app.configure(function(){
   app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.logger('dev'));
-  app.use(neo4jProxy(/\/webadmin\/.+/, 'localhost', 7474));
-  app.use(neo4jProxy(/\/db\/data\/.*/, 'localhost', 7474));
-  app.use(neo4jProxy(/\/db\/manage\/.*/, 'localhost', 7474));
+  app.use(neo4jProxy(/\/webadmin\/.+/, neo4j_connect.host, neo4j_connect.port));
+  app.use(neo4jProxy(/\/db\/data\/.*/, neo4j_connect.host, neo4j_connect.port));
+  app.use(neo4jProxy(/\/db\/manage\/.*/, neo4j_connect.host, neo4j_connect.port));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser('the weather is nice in Sweden'));
