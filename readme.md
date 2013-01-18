@@ -24,3 +24,6 @@ using css and javascript.
 ### Run Neo4j Redress
 
 - `node server`
+
+## Hosted on Heroku
+
